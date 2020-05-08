@@ -36,9 +36,30 @@ class _MainPageState extends State<MainPage> {
     TrendingPage(),
   ];
 
+  PageController pageController;
+
   int _selectedIndex = 0;
 
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
+
   _onTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    pageController.jumpToPage(index);
+  }
+
+  void onPageChanged(int index) {
     setState(() {
       _selectedIndex = index;
     });
@@ -50,7 +71,11 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         title: Text("Some App"),
       ),
-      body: _pages[_selectedIndex],
+      body: PageView(
+        children: _pages,
+        controller: pageController,
+        onPageChanged: onPageChanged,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         backgroundColor: Colors.grey[300],
