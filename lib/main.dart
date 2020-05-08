@@ -50,7 +50,10 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         title: Text("Some App"),
       ),
-      body: _pages[_selectedIndex],
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: <Widget>[..._pages],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         backgroundColor: Colors.grey[300],
