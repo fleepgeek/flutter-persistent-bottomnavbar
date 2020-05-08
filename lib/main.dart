@@ -32,9 +32,15 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   final List<Widget> _pages = [
-    HomePage(),
-    TrendingPage(),
+    HomePage(
+      key: PageStorageKey("Home Page"),
+    ),
+    TrendingPage(
+      key: PageStorageKey("Trending Page"),
+    ),
   ];
+
+  final PageStorageBucket bucket = PageStorageBucket();
 
   int _selectedIndex = 0;
 
@@ -50,7 +56,10 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         title: Text("Some App"),
       ),
-      body: _pages[_selectedIndex],
+      body: PageStorage(
+        child: _pages[_selectedIndex],
+        bucket: bucket,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         backgroundColor: Colors.grey[300],
