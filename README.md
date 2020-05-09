@@ -1,6 +1,14 @@
 # flutter_persistent_bottom_navbar
 
-A new Flutter project.
+The corresponding repo for my YouTube tutorial.
+Check it out [here](https://youtu.be/GK8KNoN0AGs)
+
+The starter code is the master branch.
+Check other branches for the different approaches covered in the tutorial.
+
+This repo shows you different ways you could persist UI state when you switch between tabs in your `BottomNavigationBar`.
+
+Both the local state and the scroll position would be persistent using the techniques covered in the tutorial.
 
 ## Getting Started
 
